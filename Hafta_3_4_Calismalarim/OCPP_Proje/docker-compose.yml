@@ -1,0 +1,48 @@
+volumes:
+  steve-db-data:
+    external: false
+
+services:
+  # MariaDB Database - Configured to match EVerest Steve's expected credentials
+  ocpp-db:
+    image: mariadb:10.4.30
+    container_name: steve-db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: ocpp-db
+      MYSQL_USER: ocpp
+      MYSQL_PASSWORD: ocpp
+    volumes:
+      - steve-db-data:/var/lib/mysql
+    networks:
+      - ocpp-network
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Steve OCPP Central System (CSMS) - Using EVerest pre-built image
+  steve:
+    image: ghcr.io/everest/everest-dev-environment/steve:docker-images-v0.1.0
+    container_name: steve-csms
+    restart: unless-stopped
+    ports:
+      # OCPP WebSocket endpoint - ws://localhost:8180
+      - "8180:8180"
+      # HTTPS
+      - "8443:8443"
+    depends_on:
+      ocpp-db:
+        condition: service_healthy
+    networks:
+      - ocpp-network
+
+networks:
+  ocpp-network:
+    name: ocpp-network
+    driver: bridge

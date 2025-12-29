@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerCharge Pro - Cihaz Yönetim Paneli</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-brand">
+            <div class="logo">⚡</div>
+            <div class="brand-text">
+                <h1>PowerCharge Pro</h1>
+                <span>Cihaz Yönetim Paneli</span>
+            </div>
+        </div>
+        <div class="header-status">
+            <div class="status-indicator" id="systemStatus">
+                <span class="status-dot online"></span>
+                <span>Sistem Durumu: <strong>ÇEVRİMİÇİ</strong></span>
+            </div>
+            <div class="status-indicator" id="ocppStatus">
+                <span class="status-dot offline"></span>
+                <span>CSMS: <strong>Bağlantı Yok</strong></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-grid">
+        <!-- Panel 1: Controls -->
+        <section class="panel controls-panel">
+            <div class="panel-header">
+                <h2>🎮 Kontroller</h2>
+            </div>
+            <div class="panel-content">
+                <button class="control-btn plug-btn" id="btnPlugIn">
+                    <span class="btn-icon">🔌</span>
+                    <span class="btn-text">Kablo Tak</span>
+                </button>
+                <button class="control-btn swipe-btn" id="btnSwipe">
+                    <span class="btn-icon">💳</span>
+                    <span class="btn-text">RFID Kart Okut</span>
+                </button>
+                <button class="control-btn unplug-btn" id="btnUnplug">
+                    <span class="btn-icon">⏏️</span>
+                    <span class="btn-text">Kablo Çıkar</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Panel 2: Device State -->
+        <section class="panel state-panel">
+            <div class="panel-header">
+                <h2>📊 Cihaz Durumu</h2>
+            </div>
+            <div class="panel-content">
+                <div class="state-grid">
+                    <div class="state-item">
+                        <label>Konnektör Durumu</label>
+                        <div class="connector-status" id="connectorStatus">
+                            <span class="status-badge available">Müsait</span>
+                        </div>
+                    </div>
+                    <div class="state-item">
+                        <label>Sayaç Değeri</label>
+                        <div class="meter-value">
+                            <span id="meterValue">0</span>
+                            <span class="unit">Wh</span>
+                        </div>
+                    </div>
+                    <div class="state-item">
+                        <label>İşlem ID</label>
+                        <div class="transaction-id">
+                            <span id="transactionId">-</span>
+                        </div>
+                    </div>
+                    <div class="state-item">
+                        <label>RFID Etiket</label>
+                        <div class="id-tag">
+                            <span id="idTag">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel 3: Configuration (VULNERABLE!) -->
+        <section class="panel config-panel">
+            <div class="panel-header">
+                <h2>⚙️ Ağ Yapılandırması</h2>
+                <span class="warning-badge">⚠️ HASSAS</span>
+            </div>
+            <div class="panel-content">
+                <div class="config-form">
+                    <div class="form-group">
+                        <label>WiFi SSID</label>
+                        <input type="text" id="configSsid" value="Corporate_Secure" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>WiFi Şifresi</label>
+                        <div class="password-field">
+                            <input type="text" id="configPassword" value="Admin123!" readonly>
+                            <span class="visibility-icon">👁️</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>CSMS URL</label>
+                        <input type="text" id="configCsms" value="ws://localhost:8180" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Şarj Noktası ID</label>
+                        <input type="text" id="configCpId" value="CP001" readonly>
+                    </div>
+                    <button class="save-btn" disabled>💾 Kaydet</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel 4: System Logs -->
+        <section class="panel logs-panel">
+            <div class="panel-header">
+                <h2>📜 Sistem Logları</h2>
+                <button class="clear-btn" id="btnClearLogs">Temizle</button>
+            </div>
+            <div class="panel-content">
+                <div class="terminal" id="logTerminal">
+                    <div class="log-entry info">[Sistem] PowerCharge Pro başlatıldı...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>PowerCharge Pro v1.0.0 | OCPP 1.6J Compatible</span>
+        <span>⚠️ Demo Amaçlı - Güvenlik Simülasyonu</span>
+    </footer>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>

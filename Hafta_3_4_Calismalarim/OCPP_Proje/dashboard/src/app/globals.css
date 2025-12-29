@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Corporate SOC Theme - Professional Security Dashboard */
+:root {
+  /* Primary: Blue for highlights */
+  --primary: 217 91% 50%;
+  --primary-foreground: 0 0% 100%;
+  
+  /* Background: Clean slate/white */
+  --background: 210 20% 98%;
+  --foreground: 222 47% 11%;
+  
+  /* Card backgrounds */
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  
+  /* Muted elements */
+  --muted: 210 20% 96%;
+  --muted-foreground: 215 14% 45%;
+  
+  /* Borders */
+  --border: 214 20% 90%;
+  --input: 214 20% 90%;
+  
+  /* Accents */
+  --accent: 210 40% 96%;
+  --accent-foreground: 222 47% 11%;
+  
+  /* Alerts - Red for critical */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Success - Green */
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 100%;
+  
+  /* Warning - Amber */
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+
+  /* Ring/focus */
+  --ring: 217 91% 50%;
+
+  /* Radius */
+  --radius: 0.5rem;
+
+  /* Popover */
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+
+  /* Secondary */
+  --secondary: 210 20% 96%;
+  --secondary-foreground: 222 47% 11%;
+}
+
+/* Dark mode - SOC typically uses dark mode */
+.dark {
+  --background: 222 47% 8%;
+  --foreground: 210 20% 98%;
+  
+  --card: 222 47% 11%;
+  --card-foreground: 210 20% 98%;
+  
+  --muted: 217 19% 18%;
+  --muted-foreground: 215 14% 65%;
+  
+  --border: 217 19% 22%;
+  --input: 217 19% 22%;
+  
+  --accent: 217 19% 18%;
+  --accent-foreground: 210 20% 98%;
+  
+  --primary: 217 91% 60%;
+  --primary-foreground: 222 47% 8%;
+  
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  
+  --success: 142 76% 42%;
+  --warning: 38 92% 55%;
+  
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 20% 98%;
+  
+  --secondary: 217 19% 18%;
+  --secondary-foreground: 210 20% 98%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom utilities for SOC dashboard */
+@layer utilities {
+  .glow-red {
+    box-shadow: 0 0 20px -5px hsl(0 84% 60% / 0.5);
+  }
+  
+  .glow-blue {
+    box-shadow: 0 0 20px -5px hsl(217 91% 60% / 0.5);
+  }
+  
+  .glow-green {
+    box-shadow: 0 0 20px -5px hsl(142 76% 42% / 0.5);
+  }
+  
+  .pulse-alert {
+    animation: pulse-red 2s infinite;
+  }
+  
+  @keyframes pulse-red {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(0 84% 60% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 10px hsl(0 84% 60% / 0);
+    }
+  }
+  
+  .scan-line {
+    background: linear-gradient(
+      transparent 0%,
+      hsl(217 91% 60% / 0.1) 50%,
+      transparent 100%
+    );
+    animation: scan 3s linear infinite;
+  }
+  
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}

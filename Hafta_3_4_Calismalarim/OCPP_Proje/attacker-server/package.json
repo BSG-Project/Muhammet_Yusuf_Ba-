@@ -1,0 +1,32 @@
+{
+    "name": "attacker-server",
+    "version": "1.0.0",
+    "description": "Rogue FTP/HTTP Server - Receives stolen data from compromised charge points",
+    "main": "dist/index.js",
+    "scripts": {
+        "dev": "tsx watch src/index.ts",
+        "build": "tsc",
+        "start": "ts-node src/index.ts",
+        "start:prod": "node dist/index.js"
+    },
+    "dependencies": {
+        "cors": "2.8.5",
+        "express": "4.21.0",
+        "multer": "1.4.5-lts.1",
+        "socket.io": "4.7.5",
+        "adm-zip": "0.5.14"
+    },
+    "devDependencies": {
+        "@types/adm-zip": "0.5.5",
+        "@types/cors": "2.8.17",
+        "@types/express": "4.17.21",
+        "@types/multer": "1.4.11",
+        "@types/node": "20.11.0",
+        "ts-node": "10.9.2",
+        "tsx": "4.7.0",
+        "typescript": "5.3.3"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    }
+}

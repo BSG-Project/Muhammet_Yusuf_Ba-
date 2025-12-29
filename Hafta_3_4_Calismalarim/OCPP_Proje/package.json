@@ -1,0 +1,26 @@
+{
+  "name": "ocpp-attack-demo",
+  "version": "1.0.0",
+  "description": "OCPP Security Vulnerability PoC - GetDiagnostics Information Disclosure Demo",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n attacker,cp,dashboard -c blue,yellow,green \"npm run dev:attacker\" \"npm run dev:cp\" \"npm run dev:dashboard\"",
+    "dev:attacker": "cd attacker-server && npm run dev",
+    "dev:cp": "cd vulnerable-cp && npm run dev",
+    "dev:dashboard": "cd dashboard && npm run dev",
+    "build": "npm run build:attacker && npm run build:cp && npm run build:dashboard",
+    "build:attacker": "cd attacker-server && npm run build",
+    "build:cp": "cd vulnerable-cp && npm run build",
+    "build:dashboard": "cd dashboard && npm run build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "install:all": "npm install && cd attacker-server && npm install && cd ../vulnerable-cp && npm install && cd ../dashboard && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "8.2.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
