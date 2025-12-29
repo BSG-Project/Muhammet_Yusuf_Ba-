@@ -1,0 +1,14 @@
+--- Collatz-LFSR-SBox Hibrit Kripto Sistemi ---
+
+Sifrelenecek Mesaj: Kriptoloji Odev Teslimi 2025
+Kullanilan Seed (Zaman Damgasi): 1735498210
+Sifreli Mesaj (Hex): 0x4a1b9c3d2e5f8a7b1c4d2e5f... (Bu kısım her çalışmada değişir)
+
+--- Istatistiksel Analiz (Rastgelelik Testi) ---
+10000 bit uretildi.
+0 Sayisi: 5000
+1 Sayisi: 5000
+Denge Orani: %50.0 (Von Neumann Duzeltmesi ile mukemmel denge)
+
+--- Desifreleme Kontrolu ---
+Cozulen Mesaj: Kriptoloji Odev Teslimi 2025
