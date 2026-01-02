@@ -21,7 +21,7 @@ Proje 4 ana katmandan oluşmaktadır:
     * `00` veya `11` -> At (Discard)
 7.  **ÇIKTI:** Yeterli bit sayısına ulaşana kadar döngüye devam et.
 
-## Algoritma Akış Şeması
+## Algoritma Akış Şeması (Görsel)
 ```mermaid
 graph TD
     Start([Başla: Seed_C & Seed_L]) --> Loop{Döngü: Hedef Bit Sayısı}
